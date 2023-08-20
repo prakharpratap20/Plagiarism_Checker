@@ -1,23 +1,22 @@
-Certainly, here's a documentation for the provided code:
-
 ## Plagiarism Detection Script Documentation
 
 ### Introduction
-This script is designed to perform plagiarism detection on a collection of text documents using the TF-IDF (Term Frequency-Inverse Document Frequency) vectorization technique and cosine similarity metric. It calculates the similarity between pairs of text documents and identifies potential instances of plagiarism.
+This script performs plagiarism detection on a collection of text documents using the TF-IDF (Term Frequency-Inverse Document Frequency) vectorization technique and cosine similarity metric. It calculates the similarity between pairs of text documents and identifies potential instances of plagiarism.
 
 ### Prerequisites
-1. Python: Make sure you have Python installed on your system.
-2. Required Libraries: This script uses the `os` module for file operations and the `sklearn` library for TF-IDF vectorization and cosine similarity calculations.
+1. **Python:** Make sure you have Python installed on your system.
+2. **Required Libraries:** This script uses the `os` module for file operations and the `sklearn` library for TF-IDF vectorization and cosine similarity calculations.
 
 ### Usage
 1. Place the script in the directory containing the text files you want to analyze for plagiarism.
-2. Run the script using a Python interpreter (e.g., `python plagiarism_detector.py`).
+2. Ensure that the text files to be analyzed have the `.txt` extension.
+3. Run the script using a Python interpreter (e.g., `python plagiarism_detector.py`).
 
 ### Script Overview
 The script follows these main steps:
 
 1. **File Loading and Text Extraction:**
-    - It retrieves a list of text files present in the same directory as the script.
+    - It retrieves a list of text files with the `.txt` extension present in the same directory as the script.
     - For each text file, it reads the content and stores it in the `user_notes` list.
 
 2. **Vectorization Function:**
@@ -26,23 +25,23 @@ The script follows these main steps:
 
 3. **Similarity Calculation Function:**
     - The `similarity` function calculates the cosine similarity between two input vectors.
-    - It uses the `cosine_similarity` function from `sklearn.metrics.pairwise` module.
+    - It uses the `cosine_similarity` function from the `sklearn.metrics.pairwise` module.
     - The function returns the cosine similarity score between the two input vectors.
 
 4. **Vectorization of User Notes:**
     - The script vectorizes the `user_notes` using the `vectorize` function, resulting in a matrix of TF-IDF vectors representing each document.
 
 5. **Plagiarism Detection:**
-    - The script creates pairs of text documents and calculates their similarity scores using the `similarity` function.
-    - If the similarity score between two documents exceeds a certain threshold, they are considered potential instances of plagiarism.
-    - The script generates a set of plagiarism results containing tuples of the form `(document1, document2, similarity_score)`.
+    - The script initializes an empty list named `plagiarism_results` to store tuples of document names and their similarity scores.
 
 6. **Plagiarism Check Function:**
-    - The `check_plagiarism` function iterates through each document and its corresponding TF-IDF vector.
-    - For each document, it calculates the similarity with all other documents and adds potential plagiarism pairs to the `plagiarism_results` set.
-    - The function returns the set of plagiarism results.
+    - The `check_plagiarism` function iterates through each pair of documents and calculates their similarity scores.
+    - If the similarity score between two documents exceeds a certain threshold, they are considered potential instances of plagiarism.
+    - The function returns a list of tuples containing document names and similarity scores.
 
-Please note that the current implementation of the `check_plagiarism` function might have a logic issue: the `return` statement is placed within the first iteration of the outer loop, potentially causing the function to terminate prematurely.
+7. **Performing Plagiarism Check and Printing Results:**
+    - The script invokes the `check_plagiarism` function to perform the plagiarism check and stores the results in the `plagiarism_results` list.
+    - The script then iterates through the `plagiarism_results` list and prints the detected plagiarism pairs along with their similarity scores.
 
 ### Conclusion
-This script provides a basic framework for performing plagiarism detection using TF-IDF vectorization and cosine similarity. However, you might need to review and potentially modify parts of the code to ensure accurate results and proper functionality.
+This script provides a functional example of how to perform basic plagiarism detection using TF-IDF vectorization and cosine similarity. However, it's important to note that plagiarism detection is a complex task that may require more sophisticated algorithms and techniques for accurate results in real-world scenarios.
